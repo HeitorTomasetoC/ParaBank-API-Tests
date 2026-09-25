@@ -1,0 +1,269 @@
+{
+  "info": {
+    "_postman_id": "c2321788-213a-439a-8d54-22e63c99daaf",
+    "name": "ParaBank API",
+    "description": "Collection de testes da API REST do ParaBank - projeto de portfólio QA/fintech",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53691051",
+    "_collection_link": "https://go.postman.co/collection/53691051-c2321788-213a-439a-8d54-22e63c99daaf?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Autenticação - Login",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/login/{{username}}/{{password}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "login",
+            "{{username}}",
+            "{{password}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Contas - Buscar por ID do Cliente",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/customers/{{customerId}}/accounts",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "customers",
+            "{{customerId}}",
+            "accounts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Contas - Buscar por ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/accounts/{{accountId}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "accounts",
+            "{{accountId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Transações - Buscar por ID da Conta",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/accounts/{{accountId}}/transactions",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "accounts",
+            "{{accountId}}",
+            "transactions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Contas - Transferir Fundos",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/transfer?fromAccountId={{accountId}}&toAccountId={{destAccountId}}&amount=10",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "transfer"
+          ],
+          "query": [
+            {
+              "key": "fromAccountId",
+              "value": "{{accountId}}"
+            },
+            {
+              "key": "toAccountId",
+              "value": "{{destAccountId}}"
+            },
+            {
+              "key": "amount",
+              "value": "10"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Contas - Criar Nova Conta",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/createAccount?customerId={{customerId}}&newAccountType=1&fromAccountId={{accountId}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "createAccount"
+          ],
+          "query": [
+            {
+              "key": "customerId",
+              "value": "{{customerId}}"
+            },
+            {
+              "key": "newAccountType",
+              "value": "1",
+              "description": "0 = CHECKING, 1 = SAVINGS"
+            },
+            {
+              "key": "fromAccountId",
+              "value": "{{accountId}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Empréstimos - Solicitar Empréstimo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/requestLoan?customerId={{customerId}}&amount=500&downPayment=100&fromAccountId={{accountId}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "requestLoan"
+          ],
+          "query": [
+            {
+              "key": "customerId",
+              "value": "{{customerId}}"
+            },
+            {
+              "key": "amount",
+              "value": "500"
+            },
+            {
+              "key": "downPayment",
+              "value": "100"
+            },
+            {
+              "key": "fromAccountId",
+              "value": "{{accountId}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Clientes - Buscar Detalhes",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/customers/{{customerId}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "customers",
+            "{{customerId}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "username",
+      "value": "darksideofthemoon"
+    },
+    {
+      "key": "password",
+      "value": "wishyouwerehere73"
+    },
+    {
+      "key": "customerId",
+      "value": ""
+    },
+    {
+      "key": "accountId",
+      "value": ""
+    },
+    {
+      "key": "destAccountId",
+      "value": ""
+    },
+    {
+      "key": "base_url",
+      "value": ""
+    }
+  ]
+}
