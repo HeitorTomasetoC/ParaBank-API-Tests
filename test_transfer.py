@@ -40,3 +40,13 @@ def test_transfer_amount_exceeds_balance():
     balance_before = account_before.json()["balance"]
     transfer_response = client.transfer(from_account_id, to_account_id, balance_before + 9999)
     assert transfer_response.status_code != 200
+
+def test_transfer_to_nonexistent_account():
+    login_response = client.login(data.USERNAME, data.PASSWORD)
+    customer_id = login_response.json()["id"]
+    accounts_response = client.get_customer_accounts(customer_id)
+    from_account_id = accounts_response.json()[0]["id"]
+    account_before = client.get_account_by_id(from_account_id)
+    balance_before = account_before.json()["balance"]
+    transfer_response = client.transfer(from_account_id, data.NONEXISTENT_ACCOUNT_ID, data.VALID_AMOUNT)
+    assert transfer_response.status_code != 200
