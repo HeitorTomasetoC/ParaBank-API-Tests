@@ -2,21 +2,21 @@ import requests
 
 class ParaBankClient:
 
-    base_url = ""
+    base_url = "https://fuzzy-fiesta-wvr96999w967hr75-8080.app.github.dev/parabank/services/bank"
 
     def login(self,username, password):
         url = f"{self.base_url}/login/{username}/{password}"
-        response = requests.get(url)
+        response = requests.get(url, headers={"Accept": "application/json"})
         return response 
 
-    def get_customer_account(self, customer_id):
+    def get_customer_accounts(self, customer_id):
         url = f"{self.base_url}/customers/{customer_id}/accounts"    
-        response = requests.get(url)
+        response = requests.get(url, headers={"Accept": "application/json"})
         return response
 
     def get_account_by_id(self, account_id):
         url = f"{self.base_url}/accounts/{account_id}"
-        response = requests.get(url)
+        response = requests.get(url, headers={"Accept": "application/json"})
         return response
 
     def transfer(self, from_account_id, to_account_id, amount):
@@ -25,7 +25,7 @@ class ParaBankClient:
             "fromAccountId": from_account_id,
             "toAccountId": to_account_id,
             "amount": amount
-        })
+        }, headers={"Accept": "application/json"})
         return response
 
     def create_account(self, customer_id, new_account_type, from_account_id):
@@ -34,12 +34,12 @@ class ParaBankClient:
             "customerId": customer_id,
             "newAccountType": new_account_type,
             "fromAccountId": from_account_id
-        })
+        }, headers={"Accept": "application/json"})
         return response
 
     def get_transactions(self, account_id):
         url = f"{self.base_url}/accounts/{account_id}/transactions"
-        response = requests.get(url)
+        response = requests.get(url, headers={"Accept": "application/json"})
         return response
 
     def request_loan(self, customer_id, amount, down_payment, from_account_id):
@@ -49,5 +49,5 @@ class ParaBankClient:
             "amount": amount,
             "downPayment": down_payment,
             "fromAccountId": from_account_id
-        })
+        }, headers={"Accept": "application/json"})
         return response
