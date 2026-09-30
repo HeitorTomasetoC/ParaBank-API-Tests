@@ -20,3 +20,8 @@ def test_get_account_by_id_valid():
     account_id = response.json()[0]["id"]
     account_response = client.get_account_by_id(account_id)
     assert account_response.status_code == 200
+
+def test_get_account_by_id_nonexistent():
+    response = client.get_account_by_id(999999)
+    assert response.status_code != 200
+    
