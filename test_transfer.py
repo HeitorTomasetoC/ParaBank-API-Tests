@@ -100,4 +100,4 @@ def test_transfer_below_minimum_balance():
     balance_before = account_before.json()["balance"]
     amount = balance_before - 50
     transfer_response = client.transfer(from_account_id, to_account_id, amount)
-    assert transfer_response.status_code != 200
+    assert transfer_response.status_code == 500
