@@ -2,7 +2,7 @@ import requests
 
 class ParaBankClient:
 
-    base_url = "https://fuzzy-fiesta-wvr96999w967hr75-8080.app.github.dev/parabank/services/bank"
+    base_url = os.environ.get("PARABANK_BASE_URL", "http://localhost:8080/parabank/services/bank")
 
     def login(self,username, password):
         url = f"{self.base_url}/login/{username}/{password}"
