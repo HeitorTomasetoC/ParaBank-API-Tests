@@ -19,7 +19,7 @@ def test_request_loan_payment_exceeds_amount():
     from_account_id = accounts_response.json()[0]["id"]
     loan_response = client.request_loan(customer_id, 100, 500, from_account_id)
     if loan_response.status_code == 200:
-        assert loan_reponse.json().get("approved") == False
+        assert loan_response.json().get("approved") == False
     else:
         assert loan_response.status_code != 200
 
